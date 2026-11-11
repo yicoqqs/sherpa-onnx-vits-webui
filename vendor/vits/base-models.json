@@ -1,0 +1,29 @@
+{
+  "revision": "d6de394d1a84391f2b1da98e1a24ba3f67f04f59",
+  "models": {
+    "C": {
+      "G_0.pth": {
+        "version": "https://git-lfs.github.com/spec/v1",
+        "oid": "sha256:d569ba5c9cd6ca0c8e493a92907b04117ba2d0932601eb2730dbd18b2337805e",
+        "size": "159072845"
+      },
+      "D_0.pth": {
+        "version": "https://git-lfs.github.com/spec/v1",
+        "oid": "sha256:ff45a0fd769b751a290ba820774f3d608be2968ef539364a54df3a62c857db08",
+        "size": "187024931"
+      }
+    },
+    "CJE": {
+      "G_0.pth": {
+        "version": "https://git-lfs.github.com/spec/v1",
+        "oid": "sha256:651381372bd0936fa90cdcfd75c8c4c231edd341a180466fc65dd3f75c5e4d70",
+        "size": "159918157"
+      },
+      "D_0.pth": {
+        "version": "https://git-lfs.github.com/spec/v1",
+        "oid": "sha256:920fb34bf3dc466e761996e787952a7bd53d4f6699561e9141bcbcf4f3f34092",
+        "size": "187024867"
+      }
+    }
+  }
+}

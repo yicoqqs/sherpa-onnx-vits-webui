@@ -1,0 +1,62 @@
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+upstream-tree.json
+runtime/
+cache/
+dist/
+config/
+deploy.env
+
+# Local backups and server maintenance artifacts
+/backups/
+/deploy-incremental.sh
+/deploy-training-modes.sh
+/deploy-vocals.sh
+/download-medium.py
+/smoke_validation.py
+/smoke-vocals-server.py
+/部署说明.md
+
+# Python environments and tooling
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*session-cookies*.txt
+cookies.txt
+
+# Model weights and generated media
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+*.wav
+*.mp3
+*.mp4
+*.tar.gz
+*.tar.bz2
+*.zip
+*.log
+*.pid
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
