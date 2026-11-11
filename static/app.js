@@ -279,7 +279,7 @@ async function loadModels(preferredId=null){const old=$('#model').value;const pr
 $('#models').addEventListener('click',async event=>{
  const button=event.target.closest('.delete-model');if(!button)return;
  const model=state.models.find(m=>m.id===button.dataset.id);if(!model)return;
- if(!confirm(`删除模型「${model.name}」？\n创建时间：${modelTimestamp(model.created)}\n模型库中的模型和语音包将移入回收目录，可撤销。训练素材、检查点及外部原始文件会保留。`))return;
+ if(!await confirmRemoval(`删除模型「${model.name}」？\n创建时间：${modelTimestamp(model.created)}\n模型库中的模型和语音包将移入回收目录，可撤销。训练素材、检查点及外部原始文件会保留。`))return;
  button.disabled=true;
  try{
   const result=await api(`/api/models/${model.id}`,{method:'DELETE'});
@@ -304,7 +304,7 @@ $('#models').addEventListener('change',event=>{const input=event.target.closest(
 $('#select-all-models').addEventListener('change',event=>{selectedModels.clear();if(event.target.checked)state.models.forEach(m=>selectedModels.add(m.id));document.querySelectorAll('.select-model').forEach(input=>input.checked=selectedModels.has(input.dataset.id));updateBulkModels();});
 action('#delete-selected-models',async()=>{
  const ids=[...selectedModels];if(!ids.length)return;
- if(!confirm(`将所选 ${ids.length} 个模型及语音包移入回收目录？\n可撤销；训练素材和检查点保留。`))return;
+ if(!await confirmRemoval(`将所选 ${ids.length} 个模型及语音包移入回收目录？\n可撤销；训练素材和检查点保留。`))return;
  const tokens=[];let failure=null;
  for(const id of ids){try{const result=await api(`/api/models/${id}`,{method:'DELETE'});tokens.push(result.undo);selectedModels.delete(id);if($('#model').value===id)clearPlayer();saveModelUndo(tokens);}catch(error){failure=error;break;}}
  await loadModels();updateBulkModels();
