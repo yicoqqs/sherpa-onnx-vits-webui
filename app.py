@@ -179,7 +179,13 @@ def create_project(body: NewProject):
 
 @app.get('/api/projects')
 def projects():
-    return sorted([read(p) for p in PROJECTS.glob('*/project.json')], key=lambda x: x['created'], reverse=True)
+    items = []
+    for path in PROJECTS.glob('*/project.json'):
+        key = path.parent.name
+        if not re.fullmatch(r'[a-f0-9]{12}', key):
+            continue
+        items.append(dict(read(path), id=key))
+    return sorted(items, key=lambda item: item['created'], reverse=True)
 
 
 class BaseDownload(BaseModel):
@@ -195,6 +201,7 @@ def download_base(body: BaseDownload = BaseDownload()):
 def get_project(key: str):
     folder = project(key)
     state = read(folder / 'project.json')
+    state['id'] = key
     config = folder / 'training/config.json'
     if config.exists():
         cfg = read(config)
